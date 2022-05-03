@@ -4,13 +4,21 @@ import { Avatar} from "@mui/material";
 import {useState , useEffect} from "react";
  
 
-function Sidebarchat() {
+function Sidebarchat({addNewChat}) {
     const [seed , setSeed] = useState(null)
 
     useEffect(()=>{
         setSeed( Math.floor(Math.random()*5000))
     },[])
-  return(
+
+    const createChat = ()=>{
+        const roomName = prompt("Enter Room Name");
+        if(roomName){
+            //do some clever database stuff
+        }
+    }
+
+  return !addNewChat ? (
   <div className="sidebarchat">
       <Avatar src = {`https://avatars.dicebear.com/api/human/${seed}.svg`}></Avatar>
       <div className="sidebarchat-info">
@@ -18,7 +26,11 @@ function Sidebarchat() {
           <p>last message..</p>
       </div>
   </div>
-  )
+  ) : (
+      <div onClick={createChat} className="sidebarchat">
+          <h2>Add New Chat</h2>
+      </div>
+  );
 }
 
 export default Sidebarchat;
