@@ -37,8 +37,9 @@
 .sidebar-header {
   display: flex;
   justify-content: space-between;
-  padding: 20px;
+  padding: 25px;
   border-right: 1px solid lightgrey;
+  border-bottom: 1px solid rgb(56, 2, 107);
   background-color: rgb(99, 35, 173);
 }
 
@@ -47,7 +48,7 @@
   align-items: center;
   justify-content: space-between;
   min-width: 5vw;
-  background-color: rgb(205, 83, 83);
+  /* background-color: rgb(205, 83, 83); */
  
 }
 
@@ -61,3 +62,5 @@
     flex: 1;
     overflow: scroll;
 }
+
+
