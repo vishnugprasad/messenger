@@ -1,5 +1,26 @@
-.sidebar-header{
-    display: flex;
-    
-    background-color: aqua;
+.sidebar {
+  background-color: aquamarine;
+  flex: 0.35;
+}
+
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  border-right: 1px solid lightgrey;
+  background-color: rgb(99, 35, 173);
+}
+
+.sidebar-headerRight {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 5vw;
+  background-color: rgb(205, 83, 83);
+ 
+}
+
+.sidebar-headerRight > .MuiSvgIcon-root{
+    margin-right: 2vw;
+    font-size: 24px !important;
 }
