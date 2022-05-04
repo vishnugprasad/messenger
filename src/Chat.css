@@ -10,6 +10,7 @@
     display: flex;
     align-items: center;
     border-bottom: 1px solid green;
+    background-color:  rgb(11, 97, 50);
 }
 
 .chat-header-info{
@@ -24,7 +25,7 @@
 }
 
 .chat-header-info > p {
-    color: rgb(78, 77, 77);
+    color: rgb(120, 116, 116);
 }
 
 
@@ -42,5 +43,65 @@
     background-repeat: repeat;
     background-position: center;
     padding: 30px;
-    overflow: scroll;
+    overflow: auto;
+}
+
+
+.chat-message{
+    position: relative;
+    font-size: 16px;
+    padding: 10px;
+    background-color: orange;
+    border-radius: 10px;
+    width: fit-content;
+    margin-bottom: 30px;
+}
+
+.chat-name{
+    position: absolute;
+    top: -15px;
+    font-weight: 800;
+    font-size: xx-small;
+}
+
+.chat-timestamp{
+    margin-left: 10px;
+    font-size: xx-small;
+}
+
+.chat-reciever{
+    margin-left: auto;
+    background-color: rgb(124, 199, 11);
+
+}
+
+.chat-footer{
+    background-color: rgb(65, 25, 128);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 62px;
+    border-top: 3px solid grey;
+}
+
+
+.chat-footer > form{
+    display: flex;
+    flex: 1;
+}
+
+.chat-footer > form > input {
+    flex: 1;
+    border-radius: 30px;
+    padding: 10px;
+    border: none;
+}
+
+.chat-footer > form >button {
+    display: none;
+    /* to disappear  the send button */
+}
+
+.chat-footer > MuiSvgIcon-root{
+    padding: 10px;
 }

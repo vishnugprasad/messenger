@@ -10,7 +10,7 @@
    height: 39px;
    padding: 10px;
    align-items: center;
-    background-color: beige;
+    background-color: rgb(56, 56, 56);
    
 }
 
@@ -60,7 +60,7 @@
 .sidebar-chats{
     background-color: darkcyan;
     flex: 1;
-    overflow: scroll;
+    overflow: auto;
 }
 
 
