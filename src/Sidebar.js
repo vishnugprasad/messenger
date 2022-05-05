@@ -7,21 +7,36 @@ import SearchIcon from "@mui/icons-material/Search";
 import "./Sidebar.css";
 import Sidebarchat from "./Sidebarchat";
 import db from "./firebase";
+import { collection, getDocs } from "firebase/firestore";
 
 function Sidebar() {
-  const [rooms, setRooms] = useState([]);
+  const [rooms, setRooms] = useState([])
 
   useEffect(() => {
-    db.collection("rooms").onSnapshot((snapshot) =>
-      setRooms(
-        snapshot.doc.map((doc) => ({
-          id: doc.id,
-          data: doc.data(),
-        }))
-      )
-    );
-  }, []);
+    
+     getDocs(collection(db, "rooms")).then(
+      (querySnapshot) => {
+        const collecetedDoc = [];
+        querySnapshot.forEach((doc) => {
+          console.log(doc.data(), collecetedDoc);
+          collecetedDoc.push(doc.data());
+        });
+        setRooms(collecetedDoc);
+      }
+    ).catch(e=> console.error(e));
+    
 
+    
+  }, []);
+  console.log(rooms);
+
+  // return (
+  //   <div>
+  //     {rooms.map((i) => (
+  //       <p>{i.name}</p>
+  //     ))}
+  //   </div>
+  // );
   return (
     <div className="sidebar">
       <div className="sidebar-header">
@@ -49,8 +64,8 @@ function Sidebar() {
 
       <div className="sidebar-chats">
         <Sidebarchat addNewChat></Sidebarchat>
-        {rooms.map(room => (
-          <Sidebarchat key ={room.id} id = {room.id} name = {room.data.name} />
+        {rooms.map((room) => (
+          <Sidebarchat key={room.name} id={room.name} name={room.name} />
         ))}
       </div>
     </div>
@@ -58,3 +73,10 @@ function Sidebar() {
 }
 
 export default Sidebar;
+
+// setRooms(
+//   snapshot.doc.map((doc) => ({
+//     id: doc.id,
+//     data: doc.data(),
+//   }))
+// )
