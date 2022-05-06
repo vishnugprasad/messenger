@@ -18,7 +18,7 @@ function Sidebar() {
       (querySnapshot) => {
         const collecetedDoc = [];
         querySnapshot.forEach((doc) => {
-          console.log(doc.data(), collecetedDoc);
+          // console.log(doc.data(), collecetedDoc);
           collecetedDoc.push(doc.data());
         });
         setRooms(collecetedDoc);
@@ -28,15 +28,9 @@ function Sidebar() {
 
     
   }, []);
-  console.log(rooms);
+  // console.log(rooms);
 
-  // return (
-  //   <div>
-  //     {rooms.map((i) => (
-  //       <p>{i.name}</p>
-  //     ))}
-  //   </div>
-  // );
+  
   return (
     <div className="sidebar">
       <div className="sidebar-header">
@@ -73,10 +67,3 @@ function Sidebar() {
 }
 
 export default Sidebar;
-
-// setRooms(
-//   snapshot.doc.map((doc) => ({
-//     id: doc.id,
-//     data: doc.data(),
-//   }))
-// )
