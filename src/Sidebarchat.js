@@ -4,6 +4,7 @@ import { Avatar } from "@mui/material";
 import { useState, useEffect } from "react";
 import db from "./firebase";
 import { doc, setDoc } from "firebase/firestore";
+import {Link} from "react-router-dom"
 
 function Sidebarchat({ id, name, addNewChat }) {
   const [seed, setSeed] = useState(null);
@@ -16,13 +17,17 @@ function Sidebarchat({ id, name, addNewChat }) {
     const roomName = prompt("Enter Room Name");
     if (roomName) {
       setDoc(doc(db, "rooms", roomName), {
-        name: roomName,
+        name: roomName
       });
     }
   };
 
+  console.log(id);
+
   return !addNewChat ? (
-    <div className="sidebarchat">
+
+    <Link to = {`/rooms/${id}`}>
+<div className="sidebarchat">
       <Avatar
         src={`https://avatars.dicebear.com/api/human/${seed}.svg`}
       ></Avatar>
@@ -31,6 +36,8 @@ function Sidebarchat({ id, name, addNewChat }) {
         <p>last message..</p>
       </div>
     </div>
+    </Link>
+    
   ) : (
     <div onClick={createChat} className="sidebarchat">
       <h2>Add New Chat</h2>
