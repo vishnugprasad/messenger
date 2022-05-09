@@ -11,6 +11,7 @@ import { collection, getDocs } from "firebase/firestore";
 
 function Sidebar() {
   const [rooms, setRooms] = useState([])
+  const[flag,setFlag]= useState("")
 
   useEffect(() => {
     
@@ -27,7 +28,7 @@ function Sidebar() {
     
 
     
-  }, []);
+  }, [flag]);
   // console.log(rooms);
 
   
@@ -57,7 +58,7 @@ function Sidebar() {
       </div>
 
       <div className="sidebar-chats">
-        <Sidebarchat addNewChat></Sidebarchat>
+        <Sidebarchat addNewChat setFlag = {setFlag}></Sidebarchat>
         {rooms.map((room) => (
           <Sidebarchat key={room.name} id={room.name} name={room.name} />
         ))}

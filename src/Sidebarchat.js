@@ -6,7 +6,7 @@ import db from "./firebase";
 import { doc, setDoc } from "firebase/firestore";
 import {Link} from "react-router-dom"
 
-function Sidebarchat({ id, name, addNewChat }) {
+function Sidebarchat({ id, name, addNewChat, setFlag }) {
   const [seed, setSeed] = useState(null);
 
   useEffect(() => {
@@ -20,6 +20,7 @@ function Sidebarchat({ id, name, addNewChat }) {
         name: roomName
       });
     }
+    setFlag(Math.random())
   };
 
   console.log(id);

@@ -7,17 +7,16 @@ import SearchIcon from "@mui/icons-material/Search";
 import AttachFileIcon from "@mui/icons-material/AttachFile";
 import InsertEmoticonIcon from "@mui/icons-material/InsertEmoticon";
 import MicIcon from "@mui/icons-material/Mic";
-import { useParams, useLocation } from "react-router-dom";
+import { useParams} from "react-router-dom";
 import db from "./firebase";
-import { collection, getDocs, onSnapshot } from "firebase/firestore";
+import { collection, getDocs } from "firebase/firestore";
 
 function Chat() {
   const [input, setInput] = useState(" ");
   const [seed, setSeed] = useState(" ");
   const { roomId } = useParams(); 
   const [roomName, setRoomName] = useState(" ");
-  console.log(useParams());
-  console.log(useLocation());
+
 
   useEffect(() => {
     if (roomId) {
@@ -29,8 +28,12 @@ function Chat() {
       getDocs(collection(db, "rooms"))
         .then((querySnapshot) => {
           console.log(querySnapshot);
+
+          querySnapshot.forEach(element=>{if(element.data().name === roomId){
+            setRoomName(element.data().name);
+          }})
           
-          setRoomName(onSnapshot.data().name);
+         
         })
         .catch((e) => console.error(e));
 
