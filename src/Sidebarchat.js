@@ -23,7 +23,7 @@ function Sidebarchat({ id, name, addNewChat, setFlag }) {
     setFlag(Math.random())
   };
 
-  console.log(id);
+  console.log(id);  
 
   return !addNewChat ? (
 
